@@ -31,13 +31,13 @@ We will review submissions on a rolling basis.
 
 | Rank | Name            | Overlap     | Wirelength (um) | Runtime (s) | Notes                |
 |------|-----------------|-------------|-----------------|-------------|----------------------|
-| 1    | Agam Damaraju     | 0.0000            | 0.2502                | 107.09s            | WL varies slightly run to run (~0.2478 - 0.2502) due to stochastic optimization
-| 2    | Brayden Rudisill  | 0.0000    | 0.2611          |   50.51     |   Timed on a mac air |
-| 3    | manuhalapeth      | 0.0000    | 0.2630          |  196.8      |                      |
-| 4    | Neil Teje         | 0.0000    | 0.2700          | 24.00s      |                      |
-| 5    | Leison Gao      | 0.0000      | 0.2796          | 50.14s      |                      |
-| 6    | William Pan     | 0.0000      | 0.2848          | 155.33s     |                      |
-| 7    | Ashmit Dutta    | 0.0000      | 0.2870          | 995.58      |  Spent my entire morning (12 am - 6 am) doing this :P       |
+| 1    | Brayden Rudisill  | 0.0000    | 0.2611          |   50.51     |   Timed on a mac air |
+| 2    | manuhalapeth      | 0.0000    | 0.2630          |  196.8      |                      |
+| 3    | Neil Teje         | 0.0000    | 0.2700          | 24.00s      |                      |
+| 4    | Leison Gao      | 0.0000      | 0.2796          | 50.14s      |                      |
+| 5    | William Pan     | 0.0000      | 0.2848          | 155.33s     |                      |
+| 6    | Ashmit Dutta    | 0.0000      | 0.2870          | 995.58      |  Spent my entire morning (12 am - 6 am) doing this :P       |
+| 7    | Agam Damaraju     | 0.0000            | 0.2502                | 107.09s            | WL varies slightly run to run (~0.2478 - 0.2502) due to stochastic optimization
 | 8    | Pawan Paleja     | 0.0000      | 0.3311         | 1.74s     |   Implemented hint for loss func, cosine annealing on learning rate with warmup, std annealing on lambda weight. Used optuna to tune hyperparam. Tested on gh codespaces 2-core.                   |
  9   | Shashank Shriram  | 0.0000     | 0.3312          |  11.32      |   🏎️💥               |
 | 10    | Gabriel Del Monte  | 0.0000      | 0.3427          | 606.07      |                                                              |
