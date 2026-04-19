@@ -266,9 +266,7 @@ _sample_counter = [0]  # Mutable container so nested helpers can update call cou
 
 # ======= OPTIMIZATION CODE (edit this part) =======
 def wirelength_attraction_loss(cell_features, pin_features, edge_list):
-    """Calculate loss based on total wirelength to minimize routing.
-
-    This is a REFERENCE IMPLEMENTATION showing how to write a differentiable loss function.
+    """Calculate smooth Manhattan wirelength loss across all pin-level edges.
 
     The loss computes the Manhattan distance between connected pins and minimizes
     the total wirelength across all edges.
@@ -351,7 +349,9 @@ def overlap_repulsion_loss(cell_features, pin_features, edge_list, margin=_OVERL
     5. Multiply overlaps in x and y to get overlap areas
     6. Mask to only consider upper triangle (i < j)
     7. Sum and normalize
+    """
 
+    """Differentiable overlap repulsion loss penalizing pairwise cell penetration.
     Args:
         cell_features: [N, 6] tensor with [area, num_pins, x, y, width, height]
         pin_features: [P, 7] tensor with pin information (not used here)
@@ -360,8 +360,6 @@ def overlap_repulsion_loss(cell_features, pin_features, edge_list, margin=_OVERL
     Returns:
         Scalar loss value (should be 0 when no overlaps exist)
     """
-
-    """Differentiable overlap penalty for all cell pairs."""
     del pin_features, edge_list  # These are unused, kept for API compatibility
 
     # Total number of cells in the current placement.
@@ -712,17 +710,18 @@ def _kmeans_2d(points, num_clusters, iters=8):
 
 
 def _hierarchical_large_n_seed(cell_features, pin_features, edge_list):
-    """Helper function to cluster 2D points using deterministic k-means.
+    """Helper function to improve initial placement for large designs via coarse clustering.
+
+    Clusters cells by connectivity, optimizes a coarse cluster-level placement,
+    then projects the optimized cluster positions back to individual cell coordinates.
 
     Args:
-        points: [N, 2] tensor of 2D coordinates to cluster
-        num_clusters: Number of cluster centroids to compute
-        iters: Number of Lloyd's algorithm iterations
+        cell_features: [N, 6] tensor with mutable cell positions and geometry
+        pin_features: [P, 7] tensor with pin-to-cell ownership
+        edge_list: [E, 2] tensor with pin-level connectivity
 
     Returns:
-        Tuple of (assignments, centroids):
-            - assignments: [N] long tensor mapping each point to its cluster index
-            - centroids: [num_clusters, 2] tensor of final cluster center coordinates
+        True if hierarchical seeding was applied, False if skipped due to size or connectivity constraints
     """
     num_cells = cell_features.shape[0]
     if num_cells < 1500 or num_cells > 4000 or edge_list.shape[0] == 0:
