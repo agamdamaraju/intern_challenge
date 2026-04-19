@@ -37,7 +37,7 @@ We will review submissions on a rolling basis.
 | 4    | Leison Gao      | 0.0000      | 0.2796          | 50.14s      |                      |
 | 5    | William Pan     | 0.0000      | 0.2848          | 155.33s     |                      |
 | 6    | Ashmit Dutta    | 0.0000      | 0.2870          | 995.58      |  Spent my entire morning (12 am - 6 am) doing this :P       |
-| 7    | Agam Damaraju     | 0.0000            | 0.2502                | 107.09s            | WL varies slightly run to run (~0.2478 - 0.2502) due to stochastic optimization
+| 7    | Agam Damaraju     | 0.0000            | 0.2502                | 107.09s            | 
 | 8    | Pawan Paleja     | 0.0000      | 0.3311         | 1.74s     |   Implemented hint for loss func, cosine annealing on learning rate with warmup, std annealing on lambda weight. Used optuna to tune hyperparam. Tested on gh codespaces 2-core.                   |
  9   | Shashank Shriram  | 0.0000     | 0.3312          |  11.32      |   🏎️💥               |
 | 10    | Gabriel Del Monte  | 0.0000      | 0.3427          | 606.07      |                                                              |
